@@ -36,7 +36,7 @@ curl --location 'http://localhost:8080/api/v1/calculate' \
   "expression": "2+2+"
 }'
 ```
-**Успешный ответ:**
+**Ответ сервера:**
 ```json
 {
   "error":"invalid expression"
@@ -122,21 +122,21 @@ export PORT=7777 && go run ./cmd/...
 В проекте реализованы тесты для модуля вычислений, а также для основного модуля. Чтобы запустить тесты, можете выполнить следующие команды:
 
 ```bash
-go test ./pkg/calculation/...
+go test ./pkg/calculation/... -v
 ```
 
 ```bash
-go test ./internal/application/...
+go test ./internal/application/... -v
 ```
 
 Также вы можете проверить покрытие тестами с помощью следующих команд:
 
 ```bash
-cd pkg/calculation && go test -cover
+go test ./pkg/calculation/... -cover
 ```
 
 ```bash
-cd internal/application && go test -cover
+go test ./internal/application/... -cover
 ```
 
 ---
@@ -146,6 +146,10 @@ cd internal/application && go test -cover
 Если у вас возникнут вопросы по поводу проекта, вы можете написать мне в телеграм: [@azizov_hikmatullo](https://azizov_hikmatullo.t.me)
 
 ---
+
+### Примечание
+
+Хотелось бы отметить, что я немного изменил архитектуру проекта и перенес старт самого сервера в пакет main. Это было сделано для получения полного покрытия пакета application (зато теперь там 100%).
 
 ## Contributing
 
