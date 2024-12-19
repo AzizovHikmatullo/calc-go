@@ -8,14 +8,17 @@ import (
 	"os"
 )
 
+// Структура приложения, содержит конфигурацию
 type Application struct {
 	Config *Config
 }
 
+// Структура для хранения конфигурации программы, содержит порт
 type Config struct {
 	Addr string
 }
 
+// Функция для получения конфигурации из переменных окружения
 func ConfigFromEnv() *Config {
 	config := new(Config)
 	config.Addr = os.Getenv("PORT")
@@ -25,21 +28,25 @@ func ConfigFromEnv() *Config {
 	return config
 }
 
+// Функция для создания экземпляра приложения
 func New() *Application {
 	return &Application{
 		Config: ConfigFromEnv(),
 	}
 }
 
+// Структура для хранения запроса пользователя
 type calculateRequest struct {
 	Expression string `json:"expression"`
 }
 
+// Структура для хранения ответа пользователю
 type calculateResponse struct {
 	Result float64 `json:"result,omitempty"`
 	Error  string  `json:"error,omitempty"`
 }
 
+// Основная логика програамы. Принимает запросы, проверяет на ошибки и выдает ответ. Также добавлено логгирование для просмотра операций в терминале.
 func CalculateHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		w.WriteHeader(http.StatusMethodNotAllowed)

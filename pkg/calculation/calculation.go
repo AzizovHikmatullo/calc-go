@@ -7,6 +7,7 @@ import (
 	"unicode"
 )
 
+// Функция для вычисления выражения
 func Calc(expression string) (float64, error) {
 	tokens, err := tokenize(expression)
 	if err != nil {
@@ -21,6 +22,7 @@ func Calc(expression string) (float64, error) {
 	return calculateRPN(rpn)
 }
 
+// Функция для токенизации выражения. Берет строку с выражением и возвращает массив токенов или ошибку.
 func tokenize(expression string) ([]string, error) {
 	var tokens []string
 	var currentNumber string
@@ -52,6 +54,7 @@ func tokenize(expression string) ([]string, error) {
 	return tokens, nil
 }
 
+// Функция для преобразования токенов в обратную польскую нотацию
 func toRPN(tokens []string) ([]string, error) {
 	var rpn []string
 	var stack []string
@@ -95,6 +98,7 @@ func toRPN(tokens []string) ([]string, error) {
 	return rpn, nil
 }
 
+// Функция для вычисления выражения в обратной польской нотации
 func calculateRPN(rpn []string) (float64, error) {
 	var stack []float64
 
