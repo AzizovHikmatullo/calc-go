@@ -36,7 +36,7 @@ curl --location 'http://localhost:8080/api/v1/calculate' \
   "expression": "2+2+"
 }'
 ```
-**Успешный ответ:**
+**Ответ сервера:**
 ```json
 {
   "error":"invalid expression"
