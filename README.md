@@ -130,11 +130,11 @@ go test ./internal/application/...
 Также вы можете проверить покрытие тестами с помощью следующих команд:
 
 ```bash
-cd pkg/calculation && go test -cover
+go test ./pkg/calculation/... -cover
 ```
 
 ```bash
-cd internal/application && go test -cover
+go test ./internal/application/... -cover
 ```
 
 ---
